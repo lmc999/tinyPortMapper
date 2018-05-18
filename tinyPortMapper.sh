@@ -130,7 +130,7 @@ start_tinyPortMapper(){
 install_tinyPortMapper(){
 echo -e "${Green}即将安装tinyPortMapper...${Font}"
 #获取最新版本号
-tinymapper_new_ver=$(wget -qO- "https://github.com/wangyu-/tinyPortMapper/tags"| grep "/wangyu-/tinyPortMapper/releases/tag/"| head -n 1| awk -F "/tag/" '{print $2}'| sed 's/\">//')
+tinyPortMapper_ver=$(wget --no-check-certificate -qO- https://api.github.com/repos/wangyu-/tinyPortMapper/releases | grep -o '"tag_name": ".*"' |head -n 1| sed 's/"//g' | sed 's/tag_name: //g') && echo ${tinyPortMapper_ver}
 #下载tinyPortMapper
 wget -N --no-check-certificate "https://github.com/wangyu-/tinyPortMapper/releases/download/${tinyPortMapper_ver}/tinymapper_binaries.tar.gz"
 #解压tinyPortMapper
