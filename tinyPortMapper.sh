@@ -137,9 +137,9 @@ wget -N --no-check-certificate "https://github.com/wangyu-/tinyPortMapper/releas
 tar -xzf tinymapper_binaries.tar.gz
 mkdir /tinyPortMapper
 KernelBit="$(getconf LONG_BIT)"
-    if [[ "$KernelBit" == '32' ]] && KernelBitVer='i386';then
+    if [[ "$KernelBit" == '32' ]];then
         mv tinymapper_x86 /tinyPortMapper/tinymapper
-    elif [[ "$KernelBit" == '64' ]] && KernelBitVer='amd64';then
+    elif [[ "$KernelBit" == '64' ]];then
         mv tinymapper_amd64 /tinyPortMapper/tinymapper
     fi
     if [ -f /tinyPortMapper/tinymapper ]; then
