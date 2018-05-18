@@ -83,36 +83,36 @@ start_tinyPortMapper(){
         chmod +x /etc/rc.local
     else
     echo -e "${Green}检测到系统无rc.local自启，正在为其配置... ${Font} "
-        echo "[Unit]
-        Description=/etc/rc.local
-        ConditionPathExists=/etc/rc.local
+echo "[Unit]
+Description=/etc/rc.local
+ConditionPathExists=/etc/rc.local
  
-        [Service]
-        Type=forking
-        ExecStart=/etc/rc.local start
-        TimeoutSec=0
-        StandardOutput=tty
-        RemainAfterExit=yes
-        SysVStartPriority=99
+[Service]
+Type=forking
+ExecStart=/etc/rc.local start
+TimeoutSec=0
+StandardOutput=tty
+RemainAfterExit=yes
+SysVStartPriority=99
  
-        [Install]
-        WantedBy=multi-user.target
-        " > /etc/systemd/system/rc-local.service
-        echo "#!/bin/sh -e
-        #
-        # rc.local
-        #
-        # This script is executed at the end of each multiuser runlevel.
-        # Make sure that the script will "exit 0" on success or any other
-        # value on error.
-        #
-        # In order to enable or disable this script just change the execution
-        # bits.
-        #
-        # By default this script does nothing.
-        " > /etc/rc.local
-        echo "nohup /tinyPortMapper/tinymapper -l 0.0.0.0:${port1} -r ${tinyPortMapperip}:${port2} -t -u > /root/tinymapper.log 2>&1 &
-        " >> /etc/rc.local
+[Install]
+WantedBy=multi-user.target
+" > /etc/systemd/system/rc-local.service
+echo "#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+" > /etc/rc.local
+echo "nohup /tinyPortMapper/tinymapper -l 0.0.0.0:${port1} -r ${tinyPortMapperip}:${port2} -t -u > /root/tinymapper.log 2>&1 &
+" >> /etc/rc.local
         chmod +x /etc/rc.local
         systemctl enable rc-local >/dev/null 2>&1
         systemctl start rc-local >/dev/null 2>&1
