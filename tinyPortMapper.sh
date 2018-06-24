@@ -130,9 +130,10 @@ systemctl start rc-local >/dev/null 2>&1
 install_tinyPortMapper(){
 echo -e "${Green}即将安装tinyPortMapper...${Font}"
 #获取最新版本号
-tinyPortMapper_ver=$(wget --no-check-certificate -qO- https://api.github.com/repos/wangyu-/tinyPortMapper/releases | grep -o '"tag_name": ".*"' |head -n 1| sed 's/"//g' | sed 's/tag_name: //g') && echo ${tinyPortMapper_ver}
+#tinyPortMapper_ver=$(wget --no-check-certificate -qO- https://api.github.com/repos/wangyu-/tinyPortMapper/releases | grep -o '"tag_name": ".*"' |head -n 1| sed 's/"//g' | sed 's/tag_name: //g') && echo ${tinyPortMapper_ver}
 #下载tinyPortMapper
-wget -N --no-check-certificate "https://github.com/wangyu-/tinyPortMapper/archive/${tinyPortMapper_ver}.tar.gz"
+#wget -N --no-check-certificate "https://github.com/wangyu-/tinyPortMapper/releases/download/${tinyPortMapper_ver}/tinymapper_binaries.tar.gz"
+wget -N --no-check-certificate "https://github.com/wangyu-/tinyPortMapper/releases/download/20180224.0/tinymapper_binaries.tar.gz"
 #解压tinyPortMapper
 tar -xzf tinymapper_binaries.tar.gz
 mkdir /tinyPortMapper
