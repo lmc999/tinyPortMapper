@@ -9,3 +9,5 @@ tinyPortMapper一键安装脚本
     wget https://raw.githubusercontent.com/iiiiiii1/tinyPortMapper/master/tinyPortMapper.sh && bash tinyPortMapper.sh
 
 按要求输入本地服务器端口，要转发的目标端口和服务器IP即可！
+
+详细说明：https://www.moerats.com/archives/629/
