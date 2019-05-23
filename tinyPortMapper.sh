@@ -50,12 +50,7 @@ disable_selinux(){
     fi
 }
 
-disable_iptables(){
-    systemctl stop firewalld.service >/dev/null 2>&1
-    systemctl disable firewalld.service >/dev/null 2>&1
-    service iptables stop >/dev/null 2>&1
-    chkconfig iptables off >/dev/null 2>&1
-}
+
 
 get_ip(){
     ip=`curl http://whatismyip.akamai.com`
@@ -169,7 +164,6 @@ main_x(){
 checkos
 rootness
 disable_selinux
-disable_iptables
 config_tinyPortMapper
 start_tinyPortMapper
 }
@@ -178,7 +172,6 @@ main_y(){
 checkos
 rootness
 disable_selinux
-disable_iptables
 install_tinyPortMapper
 config_tinyPortMapper
 start_tinyPortMapper
